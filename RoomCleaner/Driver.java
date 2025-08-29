@@ -57,7 +57,9 @@ for (int i = 1; i <= 2; i++){
 	r.turnLeft();
 	r.move();
 	r.turnLeft();
-	for (int a = 1; a <= 7; a++){
+	//for (int a = 1; a <= 7; a++){
+		//r.move();
+   while (r.frontIsClear()==true){
 		r.move();
 		while (r.nextToABeeper()==true){
 			r.pickBeeper();
@@ -110,4 +112,4 @@ for (int a = 1; a <= 7; a++){
 }
 
 
-
+   
