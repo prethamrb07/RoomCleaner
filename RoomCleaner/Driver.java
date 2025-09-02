@@ -29,6 +29,16 @@ public class Driver implements Directions {
 	 * console). A more elegant way to get user input might include using a
 	 * JOptionPane.
 	 */
+	Scanner WorldScanner = new Scanner(System.in);
+	Scanner y_coordScanner = new Scanner(System.in);
+	Scanner x_coordScanner = new Scanner(System.in);
+	
+	System.out.print("Enter the world: ");
+	//right here
+	System.out.print("Enter the x_coordinate: ");
+	System.out.print("Enter the y_coordinate: ");
+
+
 	Robot r = new Robot(7,6,East,100);
     String wrldName = "basicRoom.wld";
 
