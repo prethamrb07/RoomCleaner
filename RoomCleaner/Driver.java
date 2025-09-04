@@ -32,19 +32,36 @@ public class Driver implements Directions {
 	Scanner WorldScanner = new Scanner(System.in);
 	Scanner y_coordScanner = new Scanner(System.in);
 	Scanner x_coordScanner = new Scanner(System.in);
+//   Scanner directionScanner = new Scanner(System.in);
+
 	
-	System.out.print("Enter the world: ");
+	System.out.print("Enter the y-coord: ");
+   String y_coord = y_coordScanner.nextLine();
+
+   System.out.print("Enter the x-coord: ");
+   String x_coord = x_coordScanner.nextLine();
+
+   System.out.print("Enter the world: ");
+   String world = WorldScanner.nextLine();
+
+//   System.out.print("Enter the direction: ");
+//   String directionInput = y_coordScanner.nextLine();
+   
+   int y_coordInteger = Integer.parseInt(y_coord);
+   int x_coordInteger = Integer.parseInt(x_coord);
+
+
+
 	//right here
-	System.out.print("Enter the x_coordinate: ");
-	System.out.print("Enter the y_coordinate: ");
-
-
-	Robot r = new Robot(7,6,East,100);
-    String wrldName = "basicRoom.wld";
-
-	World.readWorld(wrldName);
+   	World.readWorld(world);
     World.setVisible(true);
 	World.setDelay(5);
+
+
+	Robot r = new Robot(y_coordInteger,x_coordInteger,East,100);
+    
+
+
 	
 	 
     
@@ -54,7 +71,7 @@ public class Driver implements Directions {
 	 * and cleans up all piles of beepers.  Think about ways you can break this
 	 * large, complex task into smaller, easier to solve problems.
 	 */
-for (int i = 1; i <= 2; i++){
+for (int i = 1; i <= 2; ){
 	//for (int a = 1; a <= 7; a++){
 		//r.move();
 	while (r.frontIsClear()==true){
@@ -64,33 +81,32 @@ for (int i = 1; i <= 2; i++){
 		//}
 		}
 	}
-	r.turnLeft();
-	r.move();
-	r.turnLeft();
-	//for (int a = 1; a <= 7; a++){
-		//r.move();
-   while (r.frontIsClear()==true){
-		r.move();
-		while (r.nextToABeeper()==true){
-			r.pickBeeper();
-	}
-}
-	r.turnLeft();
-	r.turnLeft();
-	r.turnLeft();
-	r.move();
-	r.turnLeft();
-	r.turnLeft();
-	r.turnLeft();
-	
-		}
+   if(r.facingEast())
+   {
+      r.turnLeft();
+      if(r.frontIsClear()){
+      
+      r.move();
+	   r.turnLeft();
+      }
+   }
+   else if(r.facingWest())
+   {
+      r.turnLeft();
+      r.turnLeft();
+      r.turnLeft();
+      if(r.frontIsClear()){
+         
+      r.move();
+      r.turnLeft();
+      r.turnLeft();
+      r.turnLeft();
+      }
+   }
 
-for (int a = 1; a <= 7; a++){
-		r.move();
-		while (r.nextToABeeper()==true){
-			r.pickBeeper();
-		}
-	}
+}
+
+
 
 
 		// the line below causes a null pointer exception
