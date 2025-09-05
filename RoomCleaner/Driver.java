@@ -16,7 +16,9 @@ public class Driver implements Directions {
 	public static void main(String[] args) {
 		// LEAVE THIS ALONE!!!!!!
 		Driver d = new Driver();
-
+int area = 1;
+int pile_number = 0;
+int beeper_number = 0;
   /**
 	 * This section of code gets info from the user in the following order: 1. Ask the user
 	 * which world file they wish to process. Right now, that world file name is
@@ -55,10 +57,10 @@ public class Driver implements Directions {
 	//right here
    	World.readWorld(world);
     World.setVisible(true);
-	World.setDelay(5);
+	World.setDelay(1);
 
 
-	Robot r = new Robot(y_coordInteger,x_coordInteger,East,100);
+	Robot r = new Robot(y_coordInteger,x_coordInteger,East,0);
     
 
 
@@ -76,8 +78,13 @@ for (int i = 1; i <= 2; ){
 		//r.move();
 	while (r.frontIsClear()==true){
 		r.move();
+      area++;
 		while (r.nextToABeeper()==true){
 			r.pickBeeper();
+         beeper_number++;
+         if (r.nextToABeeper()==false){
+            pile_number++;
+         }
 		//}
 		}
 	}
@@ -87,6 +94,7 @@ for (int i = 1; i <= 2; ){
       if(r.frontIsClear()){
       
       r.move();
+      area++;
 	   r.turnLeft();
       }
    }
@@ -98,6 +106,7 @@ for (int i = 1; i <= 2; ){
       if(r.frontIsClear()){
          
       r.move();
+      area++;
       r.turnLeft();
       r.turnLeft();
       r.turnLeft();
@@ -105,13 +114,17 @@ for (int i = 1; i <= 2; ){
    }
 
 }
+System.out.println("The area is " + area);
+System.out.println("The number of beepers is " + beeper_number);
 
+System.out.print("hi");
+System.out.println("hello");
 
 
 
 		// the line below causes a null pointer exception
 		// what is that and why are we getting it?
-		roomba.move();
+		//roomba.move();
 
 
   
@@ -125,8 +138,11 @@ for (int i = 1; i <= 2; ){
 	 * this info in the console (boring) or you can present using JOptionPane (cool!)
 	 */
 
-    System.out.println("The biggest pile was ");
-
+    //System.out.println("The biggest pile was ");
+WorldScanner.close();
+y_coordScanner.close();
+x_coordScanner.close();
+    
 
 
 
