@@ -19,6 +19,9 @@ public class Driver implements Directions {
 int area = 1;
 int pile_number = 0;
 int beeper_number = 0;
+int largest_pile = 0;
+int idv_pile = 0;
+
   /**
 	 * This section of code gets info from the user in the following order: 1. Ask the user
 	 * which world file they wish to process. Right now, that world file name is
@@ -74,16 +77,22 @@ int beeper_number = 0;
 	 * large, complex task into smaller, easier to solve problems.
 	 */
 for (int i = 1; i <= 2; ){
-	//for (int a = 1; a <= 7; a++){
-		//r.move();
 	while (r.frontIsClear()==true){
 		r.move();
       area++;
 		while (r.nextToABeeper()==true){
 			r.pickBeeper();
          beeper_number++;
+			idv_pile++;
+			if (idv_pile > largest_pile){
+					idv_pile = largest_pile;
+				}
          if (r.nextToABeeper()==false){
             pile_number++;
+	//			if (idv_pile > largest_pile){
+	//				idv_pile = largest_pile;
+	//			}
+			idv_pile = 0;
          }
 		//}
 		}
@@ -96,7 +105,12 @@ for (int i = 1; i <= 2; ){
       r.move();
       area++;
 	   r.turnLeft();
-      }
+      }else{
+			System.out.println("The area is " + area);
+			System.out.println("The number of beepers is " + beeper_number);
+			System.out.println("There are " + pile_number + " piles");
+			System.out.println("The largest pile has " + largest_pile + " beepers");
+		}
    }
    else if(r.facingWest())
    {
@@ -110,9 +124,15 @@ for (int i = 1; i <= 2; ){
       r.turnLeft();
       r.turnLeft();
       r.turnLeft();
-      }
-   }
+      }else{
+			System.out.println("The area is " + area);
+			System.out.println("The number of beepers is " + beeper_number);
+			System.out.println("There are " + pile_number + " piles");
+			System.out.println("The largest pile has " + largest_pile + " beepers");
 
+		}
+   }
+	i = 0;
 }
 System.out.println("The area is " + area);
 System.out.println("The number of beepers is " + beeper_number);
