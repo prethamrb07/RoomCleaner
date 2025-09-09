@@ -54,13 +54,17 @@ int idv_pile = 0;
    
    int y_coordInteger = Integer.parseInt(y_coord);
    int x_coordInteger = Integer.parseInt(x_coord);
+	int avenue = y_coordInteger;
+	int street = x_coordInteger;
+	int avenue_largest = 0;
+	int street_largest = 0;
 
 
 
 	//right here
    	World.readWorld(world);
     World.setVisible(true);
-	World.setDelay(1);
+	World.setDelay(0);
 
 
 	Robot r = new Robot(y_coordInteger,x_coordInteger,East,0);
@@ -78,14 +82,16 @@ int idv_pile = 0;
 	 */
 for (int i = 1; i <= 2; ){
 	while (r.frontIsClear()==true){
-		r.move();
-      area++;
+		
 		while (r.nextToABeeper()==true){
 			r.pickBeeper();
          beeper_number++;
 			idv_pile++;
 			if (idv_pile > largest_pile){
-					idv_pile = largest_pile;
+					largest_pile = idv_pile;
+					avenue_largest = avenue;
+					street_largest = street;
+
 				}
          if (r.nextToABeeper()==false){
             pile_number++;
@@ -96,6 +102,9 @@ for (int i = 1; i <= 2; ){
          }
 		//}
 		}
+		r.move();
+		street++;
+      area++;
 	}
    if(r.facingEast())
    {
@@ -103,6 +112,7 @@ for (int i = 1; i <= 2; ){
       if(r.frontIsClear()){
       
       r.move();
+		avenue++;
       area++;
 	   r.turnLeft();
       }else{
@@ -110,6 +120,10 @@ for (int i = 1; i <= 2; ){
 			System.out.println("The number of beepers is " + beeper_number);
 			System.out.println("There are " + pile_number + " piles");
 			System.out.println("The largest pile has " + largest_pile + " beepers");
+			System.out.println("The location of the largest pile is at " + avenue_largest + ", " + street_largest);
+			System.out.println("The average number of beepers per pile is " + beeper_number/pile_number);
+			System.out.println("The room is " + (pile_number)/(area) + " percent dirty");
+			
 		}
    }
    else if(r.facingWest())
@@ -120,6 +134,7 @@ for (int i = 1; i <= 2; ){
       if(r.frontIsClear()){
          
       r.move();
+		avenue++;
       area++;
       r.turnLeft();
       r.turnLeft();
@@ -129,7 +144,9 @@ for (int i = 1; i <= 2; ){
 			System.out.println("The number of beepers is " + beeper_number);
 			System.out.println("There are " + pile_number + " piles");
 			System.out.println("The largest pile has " + largest_pile + " beepers");
-
+			System.out.println("The location of the largest pile is at " + avenue_largest + ", " + street_largest);
+			System.out.println("The average number of beepers per pile is " + beeper_number/pile_number);
+			System.out.println("The room is " + (pile_number)/(area) + " percent dirty");
 		}
    }
 	i = 0;
