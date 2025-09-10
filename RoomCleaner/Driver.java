@@ -121,8 +121,8 @@ for (int i = 1; i <= 2; ){
 			System.out.println("There are " + pile_number + " piles");
 			System.out.println("The largest pile has " + largest_pile + " beepers");
 			System.out.println("The location of the largest pile is at " + avenue_largest + ", " + street_largest);
-			System.out.println("The average number of beepers per pile is " + beeper_number/pile_number);
-			System.out.println("The room is " + (pile_number)/(area) + " percent dirty");
+			System.out.println("The average number of beepers per pile is " + (beeper_number/pile_number));
+			System.out.println("The room is " + (double)pile_number/area + " percent dirty");
 			
 		}
    }
@@ -146,7 +146,7 @@ for (int i = 1; i <= 2; ){
 			System.out.println("The largest pile has " + largest_pile + " beepers");
 			System.out.println("The location of the largest pile is at " + avenue_largest + ", " + street_largest);
 			System.out.println("The average number of beepers per pile is " + beeper_number/pile_number);
-			System.out.println("The room is " + (pile_number)/(area) + " percent dirty");
+			System.out.println("The room is " + ((double)pile_number/area)*100 + " percent dirty");
 		}
    }
 	i = 0;
