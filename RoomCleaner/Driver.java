@@ -60,7 +60,6 @@ int idv_pile = 0;
 	int street_largest = 0;
 
 
-
 	//right here
    	World.readWorld(world);
     World.setVisible(true);
@@ -110,18 +109,37 @@ for (int i = 1; i <= 2; ){
    {
       r.turnLeft();
       if(r.frontIsClear()){
-      
+
       r.move();
 		avenue++;
       area++;
 	   r.turnLeft();
       }else{
+        while (r.nextToABeeper()==true){
+			r.pickBeeper();
+         beeper_number++;
+			idv_pile++;
+			if (idv_pile > largest_pile){
+					largest_pile = idv_pile;
+					avenue_largest = avenue;
+					street_largest = street;
+
+				}
+         if (r.nextToABeeper()==false){
+            pile_number++;
+	//			if (idv_pile > largest_pile){
+	//				idv_pile = largest_pile;
+	//			}
+			idv_pile = 0;
+         }
+		//}
+		}
 			System.out.println("The area is " + area);
 			System.out.println("The number of beepers is " + beeper_number);
 			System.out.println("There are " + pile_number + " piles");
 			System.out.println("The largest pile has " + largest_pile + " beepers");
 			System.out.println("The location of the largest pile is at " + avenue_largest + ", " + street_largest);
-			System.out.println("The average number of beepers per pile is " + (beeper_number/pile_number));
+			System.out.println("The average number of beepers per pile is " + (double)beeper_number/pile_number);
 			System.out.println("The room is " + (double)pile_number/area + " percent dirty");
 			
 		}
@@ -132,20 +150,40 @@ for (int i = 1; i <= 2; ){
       r.turnLeft();
       r.turnLeft();
       if(r.frontIsClear()){
-         
+      
       r.move();
+      
 		avenue++;
       area++;
       r.turnLeft();
       r.turnLeft();
       r.turnLeft();
       }else{
+        while (r.nextToABeeper()==true){
+			r.pickBeeper();
+         beeper_number++;
+			idv_pile++;
+			if (idv_pile > largest_pile){
+					largest_pile = idv_pile;
+					avenue_largest = avenue;
+					street_largest = street;
+
+				}
+         if (r.nextToABeeper()==false){
+            pile_number++;
+	//			if (idv_pile > largest_pile){
+	//				idv_pile = largest_pile;
+	//			}
+			idv_pile = 0;
+         }
+		//}
+		}
 			System.out.println("The area is " + area);
 			System.out.println("The number of beepers is " + beeper_number);
 			System.out.println("There are " + pile_number + " piles");
 			System.out.println("The largest pile has " + largest_pile + " beepers");
 			System.out.println("The location of the largest pile is at " + avenue_largest + ", " + street_largest);
-			System.out.println("The average number of beepers per pile is " + beeper_number/pile_number);
+			System.out.println("The average number of beepers per pile is " + (double)beeper_number/pile_number);
 			System.out.println("The room is " + ((double)pile_number/area)*100 + " percent dirty");
 		}
    }
@@ -189,6 +227,9 @@ x_coordScanner.close();
 
   }
 }
+
+
+   
 
 
    
