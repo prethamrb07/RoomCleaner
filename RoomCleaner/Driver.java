@@ -7,15 +7,23 @@ import kareltherobot.*;
 public class Driver implements Directions {
 // declared here so it is visible in all the methods!! 
 // It will be assigned a value in the getInfo method
-	private static Robot roomba; 
+	private static Robot r; 
 
 
 	// You will add very many variables!!
 
+	static void turnRight(){
+		r.turnLeft();
+		r.turnLeft();
+		r.turnLeft();
+
+	}
 	
 	public static void main(String[] args) {
 		// LEAVE THIS ALONE!!!!!!
 		Driver d = new Driver();
+
+	
 int area = 1;
 int pile_number = 0;
 int beeper_number = 0;
@@ -66,7 +74,7 @@ int idv_pile = 0;
 	World.setDelay(0);
 
 
-	Robot r = new Robot(y_coordInteger,x_coordInteger,East,0);
+	r = new Robot(y_coordInteger,x_coordInteger,East,0);
     
 
 
@@ -146,18 +154,20 @@ for (int i = 1; i <= 2; ){
    }
    else if(r.facingWest())
    {
-      r.turnLeft();
-      r.turnLeft();
-      r.turnLeft();
+     // r.turnLeft();
+     // r.turnLeft();
+     // r.turnLeft();
+	  turnRight();
       if(r.frontIsClear()){
       
       r.move();
       
 		avenue++;
       area++;
-      r.turnLeft();
-      r.turnLeft();
-      r.turnLeft();
+		turnRight();
+     // r.turnLeft();
+     // r.turnLeft();
+     // r.turnLeft();
       }else{
         while (r.nextToABeeper()==true){
 			r.pickBeeper();
